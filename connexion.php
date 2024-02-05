@@ -2,6 +2,15 @@
 if(isset($_GET["message"])){
     $message = $_GET["message"];
 }
+
+if(!isset($_SESSION)){
+    session_start();
+}
+
+if(isset($_SESSION['session-courreil'])){
+    session_unset();
+    session_destroy();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +24,7 @@ if(isset($_GET["message"])){
 
 </head>
 <body>
-    <?php include "header.php"?>
+    <?php include "./includes/header.php"?>
 
     <div class="container">
         
@@ -39,7 +48,7 @@ if(isset($_GET["message"])){
                         }
                            
                         ?>
-                            <form action="connexion-action.php" method="post">
+                            <form action="./action/connexion-action.php" method="post">
                                 <div class="col-12">
 
                                     <div class="row">
@@ -69,6 +78,22 @@ if(isset($_GET["message"])){
                                     </div>
                                   
                                 </div>
+
+                                <div class="col-12" style="margin-top: 15px;">
+    
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label for="input-mod-passe">Langue</label>
+                                        </div>
+    
+                                        <div class="col-9">
+                                        <select class="form-select" aria-label="Default select example" name="langue" required>
+                                            <option selected value="Francais">Francais</option>
+                                            <option value="Anglais">Anglais</option>
+                                        </select>
+                                    </div>
+                                  
+                                </div>
     
                                 <div class="col-12" style="margin-top: 15px;">
                                     <button type="submit" class="btn btn-success" onsubmit="redirectToCatalogue()"> Connecter</button>
@@ -86,10 +111,11 @@ if(isset($_GET["message"])){
 
     </div>
 
-    <?php include "footer.php" ?>
+    <?php include "./includes/footer.php" ?>
 
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
 <script>
     const redirectToCatalogue = ()=>{

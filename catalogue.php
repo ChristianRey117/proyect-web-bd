@@ -22,6 +22,32 @@ $film3->cal = 5;
 
 $films = array($film1, $film2, $film3);
 
+function showFilms($titre, $note, $ligne_image,$type, $htmlCalif){
+echo("
+<div class='col-4'>
+<div class='card' style='max-width: 18rem;'>
+    <img src='$ligne_image' class='card-img-top' alt='' style='max-width: 18rem; max-height: 12rem;'>
+    <div class='card-body'>
+      <h5 class='card-title'>$titre</h5>
+      <div class='row' style='margin-bottom: 5px;'>
+        <div class='col-12'>
+            <p class='card-text' style='font-weight: 300; font-size: small;'>$note</p>
+        </div>
+
+        <div class='col-12'>
+            <p class='clasificacion'>".$htmlCalif."
+                
+              </p>
+
+              <p>Type de film: $type</p>
+        </div>
+      </div>
+      <a href='#' class='btn btn-primary'>Go somewhere</a>
+    </div>
+  </div>
+</div>
+");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +61,7 @@ $films = array($film1, $film2, $film3);
 
 </head>
 <body >
-   <?php include "header.php" ?>
+   <?php include "./includes/header.php" ?>
 
     <div class="container" >
         <div class="row" style="margin-top: 5px;">
@@ -47,30 +73,7 @@ $films = array($film1, $film2, $film3);
               for($i=0; $i < $film->cal; $i++){
                 $htmlCal = $htmlCal."<label for='radio1'>★</label>";
               }
-              echo("
-              <div class='col-4'>
-              <div class='card' style='max-width: 18rem;'>
-                  <img src='$film->lien' class='card-img-top' alt='' style='max-width: 18rem; max-height: 12rem;'>
-                  <div class='card-body'>
-                    <h5 class='card-title'>$film->titre</h5>
-                    <div class='row' style='margin-bottom: 5px;'>
-                      <div class='col-12'>
-                          <p class='card-text' style='font-weight: 300; font-size: small;'>$film->notes</p>
-                      </div>
-
-                      <div class='col-12'>
-                          <p class='clasificacion'>".$htmlCal."
-                              
-                            </p>
-
-                            <p>Type de film: $film->type</p>
-                      </div>
-                    </div>
-                    <a href='#' class='btn btn-primary'>Go somewhere</a>
-                  </div>
-                </div>
-          </div>
-              ");
+              showFilms($film->titre, $film->notes, $film->lien,$film->type,$htmlCal);
             }
           ?>
         </div>
@@ -78,6 +81,6 @@ $films = array($film1, $film2, $film3);
         
     </div>
 
-    <?php include "footer.php"?>
+    <?php include "./includes/footer.php"?>
 </body>
 </html>

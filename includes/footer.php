@@ -9,7 +9,20 @@
 <body>
 
 <footer class="bottom" style="position: fixed; bottom: 0;">
-        Pizza Planet Copyright 2024 | Tous droits reserves    </footer>
+        <?php 
+            if(isset($_COOKIE['langue'])){
+                if($_COOKIE['langue'] == 'Francais'){
+                    echo("Cine Mark Copyright 2024 | Tous droits reserves ");
+                }
+                else{
+                    echo("Cine Mark Copyright 2024 | All rights reserved");
+                }
+            }else{
+                echo("Cine Mark Copyright 2024 | Tous droits reserves ");
+
+            }
+        ?>
+           </footer>
     
 </body>
 </html>

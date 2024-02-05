@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +15,21 @@
 <div class="topnav">
         <a href="./index.php"><img src="./logo cinema.png" alt="" width="65rem"></a>
         <a class="active" href="./index.php">Accueil</a>
-        <a href="./connexion.php">Connexion</a>
+        <a href="./a_propos.php">A propos</a>
         <a href="./catalogue.php">Catalogue</a>
+        <?php 
+            if(isset($_SESSION["session-courreil"])){
+                $courreil = $_SESSION["session-courreil"];
+                echo("
+                <a href='connexion.php' style='position:fixed; right:0'>Bonjour $courreil</a>
+                ");
+            }else{
+                echo("
+                <a href='connexion.php' style='position:fixed; right:0'>Connexion</a>
+                ");
+            }
+        ?>
+        
 </div>
     
 </body>
