@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+$xml = simplexml_load_file('./textes/header.xml');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,21 +18,40 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <div class="topnav">
         <a href="./index.php"><img src="./logo cinema.png" alt="" width="65rem"></a>
-        <a class="active" href="./index.php">Accueil</a>
-        <a href="./a_propos.php">A propos</a>
-        <a href="./catalogue.php">Catalogue</a>
-        <?php 
-            if(isset($_SESSION["session-courreil"])){
-                $courreil = $_SESSION["session-courreil"];
-                echo("
-                <a href='connexion.php' style='position:fixed; right:0'>Bonjour $courreil</a>
-                ");
-            }else{
-                echo("
-                <a href='connexion.php' style='position:fixed; right:0'>Connexion</a>
-                ");
+        <?php
+        foreach($xml->children() as $button){
+            $langue = "FR";
+            if(isset($_COOKIE['langue'])){
+                if($_COOKIE['langue'] != 'Francais'){
+                   $langue = "EN";
+                }
             }
-        ?>
+            $text_button = $button->$langue;
+            if(strval($text_button) == 'Connection' || strval($text_button) == 'Connexion'){
+                if(isset($_SESSION["session-courreil"])){
+                    $courreil = $_SESSION["session-courreil"];
+                    $text_hello = $xml->Button[$xml->count() - 1]->$langue;
+                    echo("
+                    <a href='connexion.php' style='position:fixed; right:0'>$text_hello $courreil</a>
+                    ");
+                }else{
+                    echo("
+                    <a href='connexion.php' style='position:fixed; right:0'>$text_button</a>
+                    ");
+                }
+                
+            }else{
+                if(strval($text_button) != 'Hello' && strval($text_button) !== 'Bonjour'){
+                    echo("
+                    <a href='$button->HREF'>$text_button</a>
+                    ");
+                }
+                
+            }
+           
+        }
+
+            ?>
         
 </div>
     

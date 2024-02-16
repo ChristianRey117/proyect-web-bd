@@ -11,6 +11,9 @@ if(isset($_SESSION['session-courreil'])){
     session_unset();
     session_destroy();
 }
+
+$xml_connection = simplexml_load_file('./textes/connexion.xml');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +33,26 @@ if(isset($_SESSION['session-courreil'])){
         
         <div class="row" style="margin-top: 5%;">
             <div class="col-12" style="text-align: center;">
-                <h1>Connexion</h1>
+            <?php 
+                foreach($xml_connection->children() as $text){
+                    $langue = "FR";
+                    if(isset($_COOKIE['langue'])){
+                        if($_COOKIE['langue'] != 'Francais'){
+                           $langue = "EN";
+                        }
+                    }
+                    $text_langue = $text->$langue;
+
+                    if(strval($text->Title) == 'Yes'){
+                        echo("
+                            <h1>
+                            $text_langue
+                            </h1>
+                        ");
+                    }
+                   
+                }
+            ?>
             </div>
 
             <div class="col-12">
@@ -49,55 +71,85 @@ if(isset($_SESSION['session-courreil'])){
                            
                         ?>
                             <form action="./action/connexion-action.php" method="post">
-                                <div class="col-12">
 
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label for="input-user">Courreil</label>
-                                        </div>
-    
-                                        <div class="col-9">
-                                            <input type="email" id="input-user" name="courreil" required>
-                                        </div>
-                                    </div>
-    
-                                  
-                                 
-                                </div>
+                            <?php 
+                            
+                            foreach($xml_connection->children() as $text){
+                                $langue = "FR";
+                                if(isset($_COOKIE['langue'])){
+                                    if($_COOKIE['langue'] != 'Francais'){
+                                       $langue = "EN";
+                                    }
+                                }
+                                $text_langue = $text->$langue;
+            
+                                if(strval($text->Title) == 'No' && (strval($text_langue) == 'Courreil' || strval($text_langue) == 'Email')){
+                                    echo("
+                                        <div class='col-12'>
+
+                                            <div class='row'>
+                                                <div class='col-3'>
+                                                    <label for='input-user'>$text_langue</label>
+                                                </div>
+            
+                                                <div class='col-9'>
+                                                    <input type='email' id='input-user' name='courreil' required>
+                                                </div>
+                                            </div>
         
-                                <div class="col-12" style="margin-top: 15px;">
-    
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label for="input-mod-passe">Mot de passe</label>
+                                        
+                                        
                                         </div>
-    
-                                        <div class="col-9">
-                                            <input type="password" id="input-mot-passe" name="motPasse" required minlength="8">
+                                    ");
+                                }else if(strval($text->Title) == 'No' && (strval($text_langue) == 'Mot de passe' || strval($text_langue) == 'Password')){
+                                    echo("
+                                        <div class='col-12' style='margin-top: 15px;'>
+        
+                                            <div class='row'>
+                                                <div class='col-3'>
+                                                    <label for='input-mod-passe'>$text_langue</label>
+                                                </div>
+            
+                                                <div class='col-9'>
+                                                    <input type='password' id='input-mot-passe' name='motPasse' required minlength='8'>
+                                                </div>
+                                            </div>
+                                    
                                         </div>
-                                    </div>
-                                  
-                                </div>
+                                    ");
+                                }
+                                else if(strval($text->Title) == 'No' && (strval($text_langue) == 'Langue' || strval($text_langue) == 'Language')){
+                                    echo("
+                                        <div class='col-12' style='margin-top: 15px;'>
+        
+                                            <div class='row'>
+                                                <div class='col-3'>
+                                                    <label for='input-mod-passe'>$text_langue</label>
+                                                </div>
+            
+                                                <div class='col-9'>
+                                                <select class='form-select' aria-label='Default select example' name='langue' required>
+                                                    <option selected value='Francais'>Francais</option>
+                                                    <option value='Anglais'>English</option>
+                                                </select>
+                                            </div>
+                                    
+                                        </div>
+                                    ");
+                                }else{
+                                    if(strval($text->Button) == 'Yes'){
+                                        echo("
+                                            <div class='col-12' style='margin-top: 15px;'>
+                                                <button type='submit' class='btn btn-success'>$text_langue</button>
+                                            </div>
+                                        ");
+                                    }
+                                }
+                               
+                            }
+                            ?>
 
-                                <div class="col-12" style="margin-top: 15px;">
-    
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label for="input-mod-passe">Langue</label>
-                                        </div>
-    
-                                        <div class="col-9">
-                                        <select class="form-select" aria-label="Default select example" name="langue" required>
-                                            <option selected value="Francais">Francais</option>
-                                            <option value="Anglais">Anglais</option>
-                                        </select>
-                                    </div>
-                                  
-                                </div>
-    
-                                <div class="col-12" style="margin-top: 15px;">
-                                    <button type="submit" class="btn btn-success" onsubmit="redirectToCatalogue()"> Connecter</button>
-                                </div>
+                    
                             </form>
                             
                         </div>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Texts>
+    <Text>
+        <Title>Yes</Title>
+        <Button>No</Button>
+        <EN>About us</EN>
+        <FR>À propos</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <Button>No</Button>
+        <EN>Address</EN>
+        <FR>Adress</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <Button>No</Button>
+        <EN>Number of employees</EN>
+        <FR>Nombre d'employés</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <Button>No</Button>
+        <EN>Annual income</EN>
+        <FR>Revenu annuel</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <Button>No</Button>
+        <EN>Do employees work weekends?</EN>
+        <FR>Est-ce que les employés travaillent la fin de semaine?</FR>
+    </Text>
+
+</Texts>

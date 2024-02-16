@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Cards>
+    <Card>
+        <Title>
+            Drive
+        </Title>
+        <Img>./images/drive.jpg</Img>
+        <Intro>
+            <EN>A Hollywood stuntman who works as a chauffeur for criminals begins receiving death threats after a botched robbery.</EN>
+            <FR>Un cascadeur hollywoodien qui travaille comme chauffeur pour des criminels commence à recevoir des menaces de mort après un braquage raté</FR>
+        </Intro>
+        <Type>
+            <EN>Action</EN>
+            <FR>Action</FR>
+        </Type>
+        <Note>3</Note>
+        <Button>
+            <EN>GO</EN>
+            <FR>ALLER</FR>
+        </Button>
+    </Card>
+
+    <Card>
+        <Title>
+            Matrix
+        </Title>
+        <Img>./images/matrix.jpg</Img>
+        <Intro>
+            <EN>Haunted by strange memories, Neo's life takes an unexpected turn when he finds himself, once again, inside the Matrix.</EN>
+            <FR>Hanté par d'étranges souvenirs, la vie de Neo prend un tournant inattendu lorsqu'il se retrouve, une fois de plus, à l'intérieur de la Matrice.</FR>
+        </Intro>
+        <Type>
+            <EN>Science Fiction</EN>
+            <FR>Science Fiction</FR>
+        </Type>
+        <Note>4</Note>
+        <Button>
+            <EN>GO</EN>
+            <FR>ALLER</FR>
+        </Button>
+    </Card>
+
+    <Card>
+        <Title>
+            Soul
+        </Title>
+        <Img>./images/soul.jpg</Img>
+        <Intro>
+            <EN>A music teacher who has lost his passion is transported out of his body into the Great Forward and must find his way back with the help of a child's soul who is learning to know himself.</EN>
+            <FR>Un professeur de musique qui a perdu sa passion est transporté hors de son corps dans le Grand Avant et doit retrouver son chemin avec l'aide d'une âme d'enfant qui apprend à se connaître.</FR>
+        </Intro>
+        <Type>
+            <EN>Animation</EN>
+            <FR>Animation</FR>
+        </Type>
+        <Note>5</Note>
+        <Button>
+            <EN>GO</EN>
+            <FR>ALLER</FR>
+        </Button>
+    </Card>
+    
+</Cards>

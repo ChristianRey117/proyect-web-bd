@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Texts>
+    <Text>
+        <Title>Yes</Title>
+        <Button>No</Button>
+        <EN>Connection</EN>
+        <FR>Connexion</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <Button>No</Button>
+        <EN>Email</EN>
+        <FR>Courreil</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <Button>No</Button>
+        <EN>Password</EN>
+        <FR>Mot de passe</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <Button>No</Button>
+        <EN>Language</EN>
+        <FR>Langue</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <Button>Yes</Button>
+        <EN>Connect</EN>
+        <FR>Connecter</FR>
+    </Text>
+</Texts>

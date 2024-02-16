@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Buttons>
+    <Button>
+        <HREF>
+            ./index.php
+        </HREF>
+        <EN>
+            Home
+        </EN>
+        <FR>
+            Accueil
+        </FR>
+    </Button>
+
+    <Button>
+        <HREF>
+            ./a_propos.php
+        </HREF>
+        <EN>
+            About us
+        </EN>
+        <FR>
+            A propos
+        </FR>
+    </Button>
+
+    <Button>
+        <HREF>
+            ./catalogue.php
+        </HREF>
+        <EN>
+            Catalog
+        </EN>
+        <FR>
+            Catalogue
+        </FR>
+    </Button>
+
+    <Button>
+        <HREF>
+            ./connexion.php
+        </HREF>
+        <EN>Connection</EN>
+        <FR>Connexion</FR>
+    </Button>
+
+    <Button>
+        <HREF>
+            ./connexion.php
+        </HREF>
+        <EN>Hello</EN>
+        <FR>Bonjour</FR>
+    </Button>
+</Buttons>

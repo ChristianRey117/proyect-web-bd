@@ -1,3 +1,7 @@
+<?php  
+$xml_index = simplexml_load_file('./textes/index.xml');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +31,27 @@
                         </h1>
                     </div>
                 </div>
-                <p>
-                    Bienvenue dans le monde du cinéma, où la magie de l'écran prend vie ! Sur notre site web, nous vous invitons à vous immerger dans une expérience cinématographique unique. Explorez notre programmation passionnante, qui comprend les films les plus récents et les plus attendus, tous genres confondus. Des aventures palpitantes aux histoires réconfortantes, il y en a pour tous les goûts.
-                </p>
+                <?php 
+                foreach($xml_index->children() as $text){
+                    $langue = "FR";
+                    if(isset($_COOKIE['langue'])){
+                        if($_COOKIE['langue'] != 'Francais'){
+                        $langue = "EN";
+                        }
+                    }
+                    $text_langue = $text->$langue;
+                    if(strval($text->Button) == 'No'){
+                        echo("<p>$text_langue</p>");
+
+                    }else{
+                        echo("
+                            <button type='button' class='btn btn-success'>$text_langue</button>
+                        ");
+                    }
+                }
+                ?>
+               
     
-                <button type="button" class="btn btn-success" onclick="redirectToConnexion()">Commande</button>
             </div>
         </div>
 

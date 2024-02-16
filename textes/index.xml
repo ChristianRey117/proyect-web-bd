@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Texts>
+    <Text>
+        <Button>No</Button>
+        <EN>
+            Welcome to the world of cinema, where the magic of the screen comes to life! On our website, we invite you to immerse yourself in a unique cinematic experience. Explore our exciting line-up of the latest and most eagerly-anticipated films in all genres. From thrilling adventures to heartwarming stories, there's something for everyone.
+        </EN>
+
+        <FR>
+            Bienvenue dans le monde du cinéma, où la magie de l'écran prend vie ! Sur notre site web, nous vous invitons à vous immerger dans une expérience cinématographique unique. Explorez notre programmation passionnante, qui comprend les films les plus récents et les plus attendus, tous genres confondus. Des aventures palpitantes aux histoires réconfortantes, il y en a pour tous les goûts.
+        </FR>
+    </Text>
+    <Text>
+        <Button>Yes</Button>
+        <EN>Order</EN>
+        <FR>Commande</FR>
+    </Text>
+</Texts>

@@ -4,6 +4,9 @@
     $revenu = $_GET['revenu'];
     $travail = $_GET['travail'];
 
+    $xml_show_propos = simplexml_load_file('./textes/montre_propos.xml');
+
+
 ?>
 
 <!DOCTYPE html>
@@ -16,13 +19,32 @@
     
 </head>
 <body>
-    <?php include "header.php" ?>
+    <?php include "./includes/header.php" ?>
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>
-                    Propos
-                </h1>
+                <?php 
+                foreach($xml_show_propos->children() as $text){
+                    $langue = "FR";
+                    if(isset($_COOKIE['langue'])){
+                        if($_COOKIE['langue'] != 'Francais'){
+                           $langue = "EN";
+                        }
+                    }
+                    $text_langue = $text->$langue;
+
+                    if(strval($text->Title) == 'Yes'){
+                        echo("
+                            <h1>
+                            $text_langue
+                            </h1>
+                        ");
+                    }
+                   
+                }
+
+                ?>
+                
             </div>
         </div>
         <div class="row">
@@ -30,10 +52,25 @@
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">Adress</th>
-                    <th scope="col">Nombre d'employes</th>
-                    <th scope="col">Revenu Annuel</th>
-                    <th scope="col">Est-ce que les employés travaillent la fin de semaine</th>
+                    <?php 
+                         foreach($xml_show_propos->children() as $text){
+                            $langue = "FR";
+                            if(isset($_COOKIE['langue'])){
+                                if($_COOKIE['langue'] != 'Francais'){
+                                   $langue = "EN";
+                                }
+                            }
+                            $text_langue = $text->$langue;
+        
+                            if(strval($text->Title) == 'No'){
+                                echo("
+                                <th scope='col'>$text_langue</th>
+                                ");
+                            }
+                           
+                        }
+                    ?>
+                  
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +87,6 @@
         </div>
     </div>
 
-    <?php include "footer.php" ?>
+    <?php include "./includes/footer.php" ?>
 </body>
 </html
