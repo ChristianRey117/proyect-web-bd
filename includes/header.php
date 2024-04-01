@@ -28,8 +28,8 @@ $xml = simplexml_load_file('./textes/header.xml');
             }
             $text_button = $button->$langue;
             if(strval($text_button) == 'Connection' || strval($text_button) == 'Connexion'){
-                if(isset($_SESSION["session-courreil"])){
-                    $courreil = $_SESSION["session-courreil"];
+                if(isset($_SESSION["prenom"])){
+                    $courreil = $_SESSION["prenom"];
                     $text_hello = $xml->Button[$xml->count() - 1]->$langue;
                     echo("
                     <a href='connexion.php' style='position:fixed; right:0'>$text_hello $courreil</a>

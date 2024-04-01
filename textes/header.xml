@@ -46,6 +46,22 @@
 
     <Button>
         <HREF>
+            ./studios.php
+        </HREF>
+        <EN>Studios</EN>
+        <FR>Studios</FR>
+    </Button>
+
+    <Button>
+        <HREF>
+            ./acteurs.php
+        </HREF>
+        <EN>Actors</EN>
+        <FR>Acteurs</FR>
+    </Button>
+
+    <Button>
+        <HREF>
             ./connexion.php
         </HREF>
         <EN>Hello</EN>

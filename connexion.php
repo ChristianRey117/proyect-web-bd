@@ -28,6 +28,7 @@ $xml_connection = simplexml_load_file('./textes/connexion.xml');
 </head>
 <body>
     <?php include "./includes/header.php"?>
+    <?php include "./includes/connexion_base_donnees.php"?>
 
     <div class="container">
         

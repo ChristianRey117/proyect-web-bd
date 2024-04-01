@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Texts>
+    <Text>
+        <Title>Yes</Title>
+        <EN>The Studios</EN>
+        <FR>Les Studios</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Name</EN>
+        <FR>Nom</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Date of creation</EN>
+        <FR>Date création</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Address</EN>
+        <FR>Adresse</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Province</EN>
+        <FR>Province</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Country</EN>
+        <FR>Pays</FR>
+    </Text>
+</Texts>
