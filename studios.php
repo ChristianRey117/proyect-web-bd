@@ -57,7 +57,10 @@ $xml_studios = simplexml_load_file('./textes/studios.xml');
                     </thead>
                     <tbody>
                         <?php 
-                            $response = $connexion->query("SELECT *, CONCAT(noCivique,' ', rue , ' ' ,codePostal) AS adress FROM tbStudio JOIN tbAdress ON tbStudio.noAdress = tbAdress.noAdress ORDER BY nom ASC");
+                            $sql = "SELECT *, CONCAT(noCivique,' ', rue , ' ' ,codePostal) AS adress FROM tbStudio JOIN tbAdress ON tbStudio.noAdress = tbAdress.noAdress ORDER BY nom ASC";
+                            $response = $connexion->prepare($sql);
+                            $response->execute();
+
                             while($studio = $response->fetch()){
                                 $nom = $studio["nom"];
                                 $dateCreation = $studio["dateCreation"];

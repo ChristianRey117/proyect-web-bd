@@ -12,7 +12,9 @@ function redirect(){
         setcookie('langue', $_POST['langue'], time() + (86400 * 30), "/"); // 86400 = 1 day
 
         try{
-            $response = $connexion->query("SELECT * FROM tbutilisateur WHERE courreil='$courreil' AND motDePasse ='$motPasse'");
+            $sql = "SELECT * FROM tbutilisateur WHERE courreil=? AND motDePasse=?";
+            $response = $connexion->prepare($sql);
+            $response->execute([$courreil, $motPasse]);
 
             $utilisateur = $response->fetch();
 

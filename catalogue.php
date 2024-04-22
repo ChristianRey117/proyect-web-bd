@@ -23,7 +23,9 @@ $xml_catalogue = simplexml_load_file('./textes/catalogue.xml');
           <?php 
           include "./includes/connexion_base_donnees.php";
 
-          $response = $connexion->query("SELECT * FROM tbFilm JOIN tbType ON tbFilm.noType = tbType.noType");
+          $sql = "SELECT * FROM tbFilm JOIN tbType ON tbFilm.noType = tbType.noType";
+          $response = $connexion->prepare($sql);
+          $response->execute();
 
           while($film = $response->fetch()){
             $image = $film["lienImage"];

@@ -57,7 +57,9 @@ $xml_acteurs = simplexml_load_file('./textes/acteurs.xml');
                     </thead>
                     <tbody>
                         <?php 
-                            $response = $connexion->query("SELECT *, TIMESTAMPDIFF(year, dateNaissance, now()) AS age FROM tbActeur JOIN tbAdress ON tbActeur.noAdress = tbAdress.noAdress ORDER BY prenom, nom ASC");
+                            $sql = "SELECT *, TIMESTAMPDIFF(year, dateNaissance, now()) AS age FROM tbActeur JOIN tbAdress ON tbActeur.noAdress = tbAdress.noAdress ORDER BY prenom, nom ASC";
+                            $response = $connexion->prepare($sql);
+                            $response->execute();
                             while($studio = $response->fetch()){
                                 $prenom = $studio["prenom"];
                                 $nom = $studio["nom"];
