@@ -31,7 +31,7 @@ $xml_acteurs = simplexml_load_file('./textes/acteurs.xml');
                 ?>
                 
             </div>
-            <div class="col-12 mt-3">
+            <div class="col-12 mt-3" style="margin-bottom: 10%">
                 <table class="table">
                     <thead>
                         <tr>
@@ -57,7 +57,7 @@ $xml_acteurs = simplexml_load_file('./textes/acteurs.xml');
                     </thead>
                     <tbody>
                         <?php 
-                            $sql = "SELECT *, TIMESTAMPDIFF(year, dateNaissance, now()) AS age FROM tbActeur JOIN tbAdress ON tbActeur.noAdress = tbAdress.noAdress ORDER BY prenom, nom ASC";
+                            $sql = "SELECT *, TIMESTAMPDIFF(year, dateNaissance, now()) AS age, 'plusMoyenne' AS SOURCE from tbacteur JOIN tbAdress ON tbActeur.noAdress = tbAdress.noAdress WHERE taille > (SELECT AVG(taille) FROM tbacteur)  UNION SELECT *, TIMESTAMPDIFF(year, dateNaissance, now()) AS age, 'moinsMoyenne' AS SOURCE FROM tbacteur JOIN tbAdress ON tbActeur.noAdress = tbAdress.noAdress WHERE taille < (SELECT AVG(taille) FROM tbacteur) ORDER BY prenom, nom ASC";
                             $response = $connexion->prepare($sql);
                             $response->execute();
                             while($studio = $response->fetch()){
@@ -67,11 +67,14 @@ $xml_acteurs = simplexml_load_file('./textes/acteurs.xml');
                                 $nationalite = $studio["nationalite"];
                                 $age = $studio["age"];
                                 $ville = $studio["ville"];
+                                $source = $studio["SOURCE"];
+                                $tailleHtml = $source == 'moinsMoyenne' ? "<td> <span style='color: red'>*</span>$taille m</td>" : "<td>$taille m</td>";
+                                $color = $source == 'moinsMoyenne' ? 'red' : '';
                                 echo("
                                     <tr>
-                                        <td>$prenom</td>
+                                        <td style='background-color: $color '>$prenom</td>
                                         <td>$nom</td>
-                                        <td>$taille m</td>
+                                        $tailleHtml
                                         <td>$nationalite</td>
                                         <td>$age ans</td>
                                         <td>$ville</td>

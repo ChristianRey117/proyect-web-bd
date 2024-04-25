@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Texts>
+    <Text>
+        <Title>Yes</Title>
+        <EN>The Actors</EN>
+        <FR>Les Acteurs</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Name</EN>
+        <FR>Prenom</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Last Name</EN>
+        <FR>Nom</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Height</EN>
+        <FR>Taille</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Nationality</EN>
+        <FR>Nationalité</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Age</EN>
+        <FR>Age</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Revenue</EN>
+        <FR>Revenue</FR>
+    </Text>
+
+    <Text>
+        <Title>No</Title>
+        <EN>Country of residence</EN>
+        <FR>Pays de résidence</FR>
+    </Text>
+</Texts>

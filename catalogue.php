@@ -32,6 +32,7 @@ $xml_catalogue = simplexml_load_file('./textes/catalogue.xml');
             $title = $film["titre"];
             $content = $film["titre"];
             $typeFilm = $film["nom"];
+            $noFilm = $film["noFilm"];
 
               $htmlCal = "";
               for($i=0; $i < $film["note"]; $i++){
@@ -57,7 +58,7 @@ $xml_catalogue = simplexml_load_file('./textes/catalogue.xml');
                             <p>Type de film: $typeFilm</p>
                       </div>
                     </div>
-                    <a href='#' class='btn btn-primary'>Aller</a>
+                    <a href='/lab04/details_film.php?id=$noFilm' class='btn btn-primary'>Aller</a>
                   </div>
                 </div>
             </div>
