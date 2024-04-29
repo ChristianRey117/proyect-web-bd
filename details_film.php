@@ -78,7 +78,7 @@ if(isset($_GET["id"])){
                     
                 </div>
                 
-                <div class="col-7 mt-3" style="margin-bottom: 10%">
+                <div class="col-7 mt-3" style="margin-bottom: 5%">
                     <?php foreach($xml_acteurs->children() as $text){
                         $langue = "FR";
                         if(isset($_COOKIE['langue'])){
@@ -156,6 +156,84 @@ if(isset($_GET["id"])){
                 
             </div>
             
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <h2 style='display:flex; justify-content: center' class='mb-4'>Commentaires</h2>
+            </div>
+            
+            <?php
+            $sql = "SELECT * FROM tbfilmcommentaire JOIN tbcommentaire ON tbfilmcommentaire.idCommentaire = tbcommentaire.idCommentaire WHERE idFilm = ?";
+            $response = $connexion->prepare($sql);
+            $response->execute([$id_film]);
+            while($commentaire = $response->fetch()){
+                $date=$commentaire['dateCreation'];
+                $commentaireText = $commentaire['commentaire'];
+                $utilisateur = $commentaire['idUtilisateur'];
+                $utilisateur = $utilisateur == null ? 'Anonimo' : $utilisateur;
+                if($utilisateur != null){
+                    $sqlRaquete = "SELECT * FROM tbutilisateur WHERE noUtilisateur = ?";
+                    $res = $connexion->prepare($sqlRaquete);
+                    $res->execute([$utilisateur]);
+                    while($dUtilisateur = $res->fetch()){
+                        $utilisateur = $dUtilisateur['prenom'];
+                    }
+                }
+                echo("
+                <div class='col-2 mb-4'>
+                <img src='./images/avatar.jpg' alt='' style='width: 80px'>
+            </div>
+
+            <div class='col-10'>
+                <div class='row'>
+                    <div class='col-6'>
+                        <h3>$utilisateur</h3>
+                    </div>
+                    <div class='col-6'>
+                        <span style='font-size: large; font-weight: bold'>Date: $date</span>
+                    </div>
+                    <div class='col-12'>
+                        <p>$commentaireText</p>
+                    </div>
+                </div>
+            </div>
+                ");
+            }
+                
+            ?>
+        </div>
+
+        <div class="row" >
+            <div class="col-12">
+                <h2>Add commentaire</h2>
+            </div>
+            
+            <div class="col-12">
+                <?php 
+                    echo("
+                    <form action='./action/commentaire-action.php?id_film=$id_film' method='post'>
+                    <div class='col-12'>
+                        <div class='form-floating'>
+                            <textarea class='form-control' placeholder='Leave a comment here' id='floatingTextarea2' style='height: 100px' name='commentaire' required></textarea>
+                        </div>
+                    </div>
+
+                    <div class='col-12'>
+                        <button class='btn btn-primary'>Comment</button>
+                    </div>
+                </form>
+                    ")
+                ?>
+                
+            </div>
+            
+
+           
+        </div>
+
+        <div class="row" style='height: 100px'>
+
         </div>
 
     </div>

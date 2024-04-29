@@ -20,22 +20,23 @@ function redirect(){
 
             if($utilisateur){
                 $_SESSION["prenom"] = $utilisateur["prenom"];
-                header("Location: /lab04/catalogue.php");
+                $_SESSION["id_utilisateur"] = $utilisateur["noUtilisateur"];
+                header("Location: /proyect-web-bd/catalogue.php");
                 exit();
             }else{
 
                 if($_POST['langue'] == 'Francais'){
-                    header("Location: /lab04/connexion.php?message=Mauvais mot de passe ou courreil");
+                    header("Location: /proyect-web-bd/connexion.php?message=Mauvais mot de passe ou courreil");
                 }else{
-                    header("Location: /lab04/connexion.php?message=Wrong password or email");
+                    header("Location: /proyect-web-bd/connexion.php?message=Wrong password or email");
                 }
                 exit();
             }
         }catch(PDOException $e){
             if($_POST['langue'] == 'Francais'){
-                header("Location: /lab04/connexion.php?message=Mauvais mot de passe ou courreil");
+                header("Location: /proyect-web-bd/connexion.php?message=Mauvais mot de passe ou courreil");
             }else{
-                header("Location: /lab04/connexion.php?message=Wrong password or email");
+                header("Location: /proyect-web-bd/connexion.php?message=Wrong password or email");
             }
             exit();
         }

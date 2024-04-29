@@ -58,7 +58,7 @@ $xml_catalogue = simplexml_load_file('./textes/catalogue.xml');
                             <p>Type de film: $typeFilm</p>
                       </div>
                     </div>
-                    <a href='/lab04/details_film.php?id=$noFilm' class='btn btn-primary'>Aller</a>
+                    <a href='/proyect-web-bd/details_film.php?id=$noFilm' class='btn btn-primary'>Aller</a>
                   </div>
                 </div>
             </div>
