@@ -44,3 +44,11 @@
   footer.bottom {
     bottom:0;
     }
+
+    label{ color:grey;}
+
+    input[type = "radio"]{ display:none;}
+
+    h4{
+      color: red;
+    }

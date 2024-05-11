@@ -12,10 +12,30 @@ if(isset($_GET["id"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pizza Planet</title>
     <link rel="icon" href="./logo cinema.png">
-    <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        form{
+            label{
+            color:grey;
+            font-size: 1.5rem;
+        }
 
-</head>
+        input[type = "radio"]{ display:none;}
+
+        .clasificacion{
+      direction: rtl;/* right to left */
+      unicode-bidi: bidi-override;/* bidi de bidireccional */
+  }
+  label:hover{color:orange;}
+  label:hover ~ label{color:orange;}
+  input[type = "radio"]:checked ~ label{color:orange;}
+        }
+  #form label {
+  font-size: 20px;
+}
+
+    </style>
+    </head>
 <body style="height: auto">
     <?php include "./includes/header.php" ?>
     <?php include "./includes/connexion_base_donnees.php"?>
@@ -75,6 +95,60 @@ if(isset($_GET["id"])){
                               ");
                             }
                         ?>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>Puntuation du film</h4>
+                        </div>
+
+                        <div class="col-12">
+                            <?php 
+                                $sql = "SELECT AVG(puntuation) AS 'puntuation' FROM tbfilmpuntuation WHERE noFilm = $id_film";
+                                $response = $connexion->prepare($sql);
+                                $response->execute();
+
+                                while($puntuation = $response->fetch()){
+                                    $puntuationInt = round($puntuation["puntuation"]);
+                                    for($i=0; $i < $puntuationInt; $i++){
+                                        echo("
+                                            <label for='radio1' style='color: orange'>★</label>
+                                        ");
+                                    }
+                                }
+                            ?>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <h4>Donne son puntuation</h4>
+                        </div>
+                        <div class="col-12">
+                        <?php 
+                                echo("
+                                <form action='action/puntuation-action.php?id_film=$id_film' method='POST'>
+                                <p class='clasificacion'>
+                                    <input id='radio1' type='radio' name='estrellas' value='5'><!--
+                                    --><label for='radio1'>★</label><!--
+                                    --><input id='radio2' type='radio' name='estrellas' value='4'><!--
+                                    --><label for='radio2'>★</label><!--
+                                    --><input id='radio3' type='radio' name='estrellas' value='3'><!--
+                                    --><label for='radio3'>★</label><!--
+                                    --><input id='radio4' type='radio' name='estrellas' value='2'><!--
+                                    --><label for='radio4'>★</label><!--
+                                    --><input id='radio5' type='radio' name='estrellas' value='1'><!--
+                                    --><label for='radio5'>★</label>
+                                </p>
+
+                                <button type='submit' class='btn btn-success'>Envoyer</button>
+                            </form>
+                                ");
+                            ?>
+                            
+                        </div>
+                    </div>
                     
                 </div>
                 
@@ -155,6 +229,7 @@ if(isset($_GET["id"])){
                 </div>
                 
             </div>
+
             
         </div>
 
